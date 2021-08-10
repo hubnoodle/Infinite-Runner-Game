@@ -37,10 +37,10 @@ function setup() {
   ground.x = ground.width /2;
   ground.velocityX = -(6 + 3*score/100);
   
-  gameOver = createSprite(650,60);
+  gameOver = createSprite(300,60);
   gameOver.addImage(gameOverImg);
   
-  restart = createSprite(650,100);
+  restart = createSprite(300,100);
   restart.addImage(restartImg);
   
   gameOver.scale = 0.5;
@@ -56,15 +56,9 @@ function setup() {
   
   score = 0;
 }
-var index = 0;
-
-index = index+1;
 
 function draw() {
   background(255);
-
-  camera.position.x = displayWidth/2;
-  //camera.position.y = displayHeight/2;
   
   text("Score: "+ score, 400,50);
   
@@ -84,6 +78,8 @@ function draw() {
     run.collide(invisibleGround);
     spawnObstacles();
   
+    camera.position.x = displayWidth/4;
+
     if(obstaclesGroup.isTouching(run)){
         gameState = END
          run.changeAnimation("collided",run_collided );
